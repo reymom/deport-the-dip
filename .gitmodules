@@ -1,0 +1,9 @@
+[submodule "defi-server"]
+	path = defi-server
+	url = https://github.com/reymom/deport-the-dip-defi
+[submodule "bot"]
+	path = bot
+	url = https://github.com/reymom/deport-the-dip-bot
+[submodule "miniapp"]
+	path = miniapp
+	url = https://github.com/reymom/deport-the-dip-miniapp
