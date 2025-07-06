@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package pancake;
+
+service SwapService { rpc ExecuteSwap(SwapRequest) returns (SwapResponse); }
+
+message SwapRequest {
+  UserContext user = 1;
+  string token_in = 2;      // ERC-20 address
+  string token_out = 3;     // ERC-20 address
+  string amount_in_wei = 4; // string to avoid JS bigint overflow
+  uint64 slippage_bps = 5;  // e.g. 50 = 0.5 %
+}
+
+message SwapResponse {
+  string tx_hash = 1;
+  string status = 2; // OK | FAILED
+  string error = 3;  // human-readable
+  string code = 4;   // machine code, e.g. INSUFFICIENT_GAS
+}
+
+/** Allow privy server to sign for a user */
+message UserContext {
+  string address = 1;   // Ethereum wallet
+  string wallet_id = 2; // Privy wallet-ID
+}

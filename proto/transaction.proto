@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package transaction;
+
+message PancakePayload {
+  string token_in = 1;      // ERC-20 token in address
+  string token_out = 2;     // ERC-20 token out address
+  string amount_in_wei = 3; // string to avoid JS bigint overflow
+  uint64 slippage_bps = 4;  // e.g. 50 = 0.5%
+}
+
+message BuildTxRequest {
+  string user_address = 1;
+  oneof payload { PancakePayload pancake = 2; }
+}
+
+message BuildTxResponse {
+  string unsigned_tx_base64 = 1;
+  string tx_info = 2;
+  TxParams tx_params = 3;
+}
+
+message SubmitTxRequest {
+  string signed_tx_base64 = 1;
+  bool wait_for_confirmation = 3;
+}
+
+message SubmitTxResponse {
+  string tx_hash = 1;
+  string explorer_url = 2;
+}
+
+service TransactionService {
+  rpc BuildUnsignedTx(BuildTxRequest) returns (BuildTxResponse);
+  rpc SubmitSignedTx(SubmitTxRequest) returns (SubmitTxResponse);
+}
+
+message TxParams {
+  string to = 1;
+  string data = 2;
+  string from = 3;
+  string gas_limit = 4;
+  string gas_price = 5;
+  string value = 6;
+  string nonce = 7;
+  uint64 chain_id = 8;
+  uint32 type = 9;
+}
