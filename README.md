@@ -87,8 +87,13 @@ miniapp/        # Git submodule
 ## Screenshots
 
 ![Mini‑App Home](images/miniapp-mainpage.png)
+
+![Mini-App Connect](images/miniapp-connect.png)
+
 ![Swap Flow](images/miniapp-swap.png)
+
 ![Leaderboard](images/miniapp-leaderboard.png)
+
 ![Bot Chat](images/bot-chat-screenshot.png)
 
 ## Roadmap
