@@ -16,7 +16,7 @@ A **three‑tier DeFi copy‑trading stack** composed of:
 
 ## Quick‑Start (Local)
 
-\### 0. Clone
+### 0. Clone
 
 ```bash
 git clone --recurse-submodules https://github.com/reymom/deport-the-dip.git
@@ -24,7 +24,7 @@ cd deport-the-dip
 cp .env.example .env   # Fill in all secrets first!
 ```
 
-\### 1. DeFi gRPC Server
+### 1. DeFi gRPC Server
 
 ```bash
 cd defi-server
@@ -37,7 +37,7 @@ Exposes:
 - `TransactionService.BuildUnsignedTx` & `SubmitSignedTx`
 - `SwapService.ExecuteSwap` (delegated / copy‑trade)
 
-\### 2. Telegram Bot
+### 2. Telegram Bot
 
 ```bash
 ngrok http 8443 --host-header=rewrite
@@ -48,7 +48,7 @@ bun install
 bun run dev
 ```
 
-\### 3. Mini‑App
+### 3. Mini‑App
 
 ```bash
 cloudflared tunnel --url http://localhost:3000
@@ -100,7 +100,6 @@ miniapp/        # Git submodule
 
 - Integrate **The Graph** for real‑time on‑chain leader stats
 - 🚧 Gas estimation & slippage config
-- UI polish & dark‑mode
 
 ---
 
